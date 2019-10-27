@@ -19,10 +19,13 @@ jobs:
             - checkout
 
             - run:
-                name: Install Main Dependencies
-                command: 'apt-get update && apt-get install -y sudo gcc g++ git python3 python3-pip'
+                name: Install sudo
+                command: 'apt-get update && apt-get install -y sudo'
             - run:
-                name: Install Latest CMake
+                name: Install main dev dependencies
+                command: 'apt-get update && sudo apt-get install -y gcc g++ git python3 python3-pip'
+            - run:
+                name: Install latest cmake
                 command: 'sudo python3 -m pip install cmake'
 
             - save_cache:
@@ -38,4 +41,4 @@ jobs:
                 command: 'cmake --build build'
             - run:
                 name: Testing
-                command: 'ctest build'
+                command: 'cd build; ctest'
