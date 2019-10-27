@@ -6,10 +6,10 @@ workflows:
         jobs:
             - prepare
             - build:
-                requiers:
+                requires:
                     - prepare
             - test:
-                requiers:
+                requires:
                     - build
 
 jobs:
