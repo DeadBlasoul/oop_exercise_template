@@ -4,12 +4,9 @@ workflows:
     version: 2
     build-and-test:
         jobs:
-            - build
-            - test:
-                requires:
-                    - build
+            - build-and-test
 jobs:
-    build:
+    build-and-test:
         docker:
             - image: "ubuntu:18.04"
         steps:
@@ -32,10 +29,6 @@ jobs:
             - run:
                 name: Creating Binary Files
                 command: 'cmake --build build'
-            - run: 'ls -la'
-    test:
-        docker:
-            - image: "ubuntu:18.04"
-        steps:
-            - checkout
-            - run: ctest
+            - run:
+                name: Testing
+                command: 'cd build; ctest'
