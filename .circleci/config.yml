@@ -2,11 +2,15 @@ version: 2
 
 workflows:
     version: 2
-    build_and_test:
+    prepare:
         jobs:
             - prepare
+    build:
+        jobs:
             - build
-            - test
+    test:
+        jobs:
+            - build
 
 jobs:
     prepare:
