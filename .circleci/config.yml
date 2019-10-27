@@ -19,7 +19,7 @@ jobs:
             - checkout
             - run:
                 name: Install Dependencies
-                command: 'apt-get update && sudo apt-get install -y $(cat dependencies.txt)'
+                command: 'apt-get update && apt-get install -y $(cat dependencies.txt)'
 
             - save_cache:
                 key: source-v1-{{ .Branch }}-{{ .Revision }}
