@@ -2,11 +2,11 @@ version: 2
 
 workflows:
     version: 2
-    build-and-test:
+    build-and-test-for-linux:
         jobs:
             - build-and-test
 jobs:
-    build-and-test:
+    build-and-test-for-linux:
         docker:
             - image: "gcc:8.2"
         steps:
@@ -26,6 +26,9 @@ jobs:
                 paths:
                     - ".git"
 
+            - run:
+                name: Install Latest CMake
+                command: 'sudo python3 -m pip install cmake'
             - run:
                 name: Creating Build Files
                 command: 'cmake -H. -Bbuild'
