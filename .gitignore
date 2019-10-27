@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Intermediate folders
+build
+out
+
+# Install folders
+bin
+
+# Visual Studio and VS Code folders
+.vs*
