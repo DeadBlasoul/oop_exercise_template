@@ -11,17 +11,20 @@ jobs:
             - image: "ubuntu:18.04"
         steps:
             - restore_cache:
-                key: deps-{{ .Branch }}-{{ checksum "dependencies.txt" }}
+                keys:
+                    - source-v1-{{ .Branch }}-{{ .Revision }}
+                    - source-v1-{{ .Branch }}-
+                    - source-v1-
             
             - checkout
             - run:
                 name: Install Dependencies
-                command: 'apt-get update && sudo apt-get install -y ${cat dependencies.txt}'
+                command: 'apt-get update && sudo apt-get install -y $(cat dependencies.txt)'
 
             - save_cache:
-                key: deps-{{ .Branch }}-{{ checksum "dependencies.txt" }}
+                key: source-v1-{{ .Branch }}-{{ .Revision }}
                 paths:
-                    - './'
+                    - ".git"
 
             - run:
                 name: Creating Build Files
