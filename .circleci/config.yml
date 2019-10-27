@@ -1,9 +1,17 @@
 version: 2
 
+workflows:
+    version: 2
+    build_and_test:
+        jobs:
+            - prepare
+            - build
+            - test
+
 jobs:
-    build:
+    prepare:
         docker:
-            - image: "debian:stretch"
+            - image: "gcc:8.2"
         steps:
             - checkout
             - run:
@@ -18,6 +26,11 @@ jobs:
             - run:
                 name: Install GIT
                 command: 'apt-get update && sudo apt-get install -y git'
+    build:
+        docker:
+            - image: "debian:stretch"
+        steps:
+            - checkout
             - run:
                 name: Creating Build Files
                 command: 'cmake -H. -Bbuild'
@@ -30,10 +43,3 @@ jobs:
         steps:
             - checkout
             - run: ctest
-
-workflows:
-    version: 2
-    build_and_test:
-        jobs:
-            - build
-            - test
