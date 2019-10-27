@@ -32,7 +32,7 @@ jobs:
                 command: 'apt-get update && sudo apt-get install -y git'
     build:
         docker:
-            - image: "debian:stretch"
+            - image: "gcc:8.2"
         steps:
             - checkout
             - run:
@@ -43,7 +43,7 @@ jobs:
                 command: 'cmake --build build'
     test:
         docker:
-            - image: "debian:stretch"
+            - image: "gcc:8.2"
         steps:
             - checkout
             - run: ctest
