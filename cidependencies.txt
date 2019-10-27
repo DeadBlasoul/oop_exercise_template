@@ -1,1 +1,1 @@
-sudo gcc cmake git
+sudo gcc g++ cmake git
