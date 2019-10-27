@@ -17,18 +17,19 @@ jobs:
                     - source-v1-
             
             - checkout
+
             - run:
-                name: Install Dependencies
-                command: 'apt-get update && apt-get install -y $(cat cidependencies.txt)'
+                name: Install Main Dependencies
+                command: 'apt-get update && apt-get install -y sudo gcc g++ git python3 python3-pip'
+            - run:
+                name: Install Latest CMake
+                command: 'sudo python3 -m pip install cmake'
 
             - save_cache:
                 key: source-v1-{{ .Branch }}-{{ .Revision }}
                 paths:
                     - ".git"
 
-            - run:
-                name: Install Latest CMake
-                command: 'sudo python3 -m pip install cmake'
             - run:
                 name: Creating Build Files
                 command: 'cmake -H. -Bbuild'
