@@ -11,7 +11,7 @@ jobs:
             - image: "ubuntu:18.04"
         steps:
             - restore_cache:
-                key: deps-{{ .Branch }}-{{ checksum "dependecies.txt" }}
+                key: deps-{{ .Branch }}-{{ checksum "dependencies.txt" }}
             
             - checkout
 
@@ -29,7 +29,7 @@ jobs:
                 command: 'apt-get update && sudo apt-get install -y git'
 
             - save_cache:
-                key: deps-{{ .Branch }}-{{ checksum "dependecies.txt" }}
+                key: deps-{{ .Branch }}-{{ checksum "dependencies.txt" }}
                 paths:
                     - './'
 
