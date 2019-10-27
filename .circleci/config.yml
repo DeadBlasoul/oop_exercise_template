@@ -8,7 +8,6 @@ workflows:
             - test:
                 requires:
                     - build
-
 jobs:
     build:
         docker:
@@ -33,6 +32,7 @@ jobs:
             - run:
                 name: Creating Binary Files
                 command: 'cmake --build build'
+            - run: 'ls -la'
     test:
         docker:
             - image: "ubuntu:18.04"
