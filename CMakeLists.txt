@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.7)
+cmake_minimum_required (VERSION 3.8)
 
 set(ExerciseNumber template) # change it to current exercise number
 set(ProjectName oop_exercise_${ExerciseNumber}) # project name that follows `oop_exercise_#` form
