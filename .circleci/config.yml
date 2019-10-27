@@ -19,13 +19,13 @@ jobs:
             - checkout
 
             - run:
-                name: Install sudo
+                name: Install Sudo
                 command: 'apt-get update && apt-get install -y sudo'
             - run:
-                name: Install main dev dependencies
+                name: Install Main Dev Dependencies
                 command: 'apt-get update && sudo apt-get install -y gcc g++ git python3 python3-pip'
             - run:
-                name: Install latest cmake
+                name: Install Latest CMake
                 command: 'sudo python3 -m pip install cmake'
 
             - save_cache:
