@@ -30,6 +30,8 @@ jobs:
 
             - save_cache:
                 key: deps-{{ .Branch }}-{{ checksum "dependecies.txt" }}
+                paths:
+                    - './'
 
             - run:
                 name: Creating Build Files
